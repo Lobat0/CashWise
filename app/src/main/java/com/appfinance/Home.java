@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
-    //teste de commit
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,12 @@ public class Home extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
+
+        MenuItem itemUsuario = menu.findItem(R.id.itemUsuario);
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        itemUsuario.setTitle((mAuth.getCurrentUser().getEmail()));
+
         return true;
     }
 

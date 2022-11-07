@@ -25,6 +25,12 @@ public class Dicas extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu,menu);
+
+        MenuItem itemUsuario = menu.findItem(R.id.itemUsuario);
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        itemUsuario.setTitle((mAuth.getCurrentUser().getEmail()));
+
         return true;
     }
 
