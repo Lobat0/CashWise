@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/item0"
+        android:enabled="false"
+        android:icon="@drawable/favicon_transparent_32x32"
+        android:title="item 0"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/itemHome"
+        android:background="#FFFFFF"
+        android:title="Home"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemAnalise"
+        android:background="#FFFFFF"
+        android:title="Análise"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemDicas"
+        android:background="#FFFFFF"
+        android:title="Dicas"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemSaldoTotal"
+        android:background="#FFFFFF"
+        android:title="Saldo Total"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemLancamento"
+        android:background="#FFFFFF"
+        android:title="Lançamento"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/itemDeslogar"
+        android:background="#FFFFFF"
+        android:title="Sair da Conta"
+        app:showAsAction="never" />
+
+</menu>

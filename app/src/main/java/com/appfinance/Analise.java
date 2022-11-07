@@ -8,34 +8,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Home extends AppCompatActivity {
+public class Analise extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
-        getSupportActionBar().setTitle("Home");
-
-        Button btnCalcJuros = (Button)findViewById(R.id.btnCalcJuros);
-
-        btnCalcJuros.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-
-                Intent it = new Intent(getApplicationContext(), Home.class);
-                startActivity(it);
-                finish();
-
-            }
-        });
+        setContentView(R.layout.activity_analise);
+        getSupportActionBar().setTitle("Análise");
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,7 +76,7 @@ public class Home extends AppCompatActivity {
                 FirebaseAuth mAuth;
                 mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
-                Toast.makeText(Home.this, "Você saiu da sua conta", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Analise.this, "Você saiu da sua conta", Toast.LENGTH_SHORT).show();
                 Intent it6 = new Intent(getApplicationContext(), Logar.class);
                 startActivity(it6);
                 finish();
