@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773485762275",
+    "project_id": "cashwise-89b8b",
+    "storage_bucket": "cashwise-89b8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773485762275:android:7b7c4e9c459a4d266fd7d6",
+        "android_client_info": {
+          "package_name": "com.appfinance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773485762275-ed72k94dd8kpget25snt25kchcshq6o5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuCWN_sAtLaZm_FrdmsfMTublIal_tqVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773485762275-ed72k94dd8kpget25snt25kchcshq6o5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

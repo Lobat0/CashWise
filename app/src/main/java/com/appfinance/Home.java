@@ -22,7 +22,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                Intent it = new Intent(getApplicationContext(), CalcularJuros.class);
+                Intent it = new Intent(getApplicationContext(), Home.class);
                 startActivity(it);
                 finish();
 

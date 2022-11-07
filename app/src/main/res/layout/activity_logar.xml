@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Logar">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#1F1717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".Login">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                app:srcCompat="@drawable/default_transparent_1000x1000"
+                tools:srcCompat="@drawable/default_transparent_1000x1000" />
+
+            <EditText
+                android:id="@+id/editTextTextEmail"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/border_radius"
+                android:ems="10"
+                android:hint="E-mail"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
+
+            <EditText
+                android:id="@+id/editTextTextSenha"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border_radius"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:password="true"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="#000000" />
+
+            <Button
+                android:id="@+id/btnEntrar"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="#55A162"
+                android:onClick="Entrar"
+                android:text="Entrar"
+                android:textColor="#000000"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/btnEsqSenha"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="40dp"
+                android:backgroundTint="#1F1717"
+                android:onClick="EsqSenha"
+                android:text="Esqueci a senha"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="30dp" />
+
+            <Button
+                android:id="@+id/btnCadastrar"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:backgroundTint="#1F1717"
+                android:onClick="Cadastrar"
+                android:text="Cadastrar"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="30dp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
