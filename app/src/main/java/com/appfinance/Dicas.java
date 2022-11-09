@@ -15,6 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Dicas extends AppCompatActivity {
 
     @Override
+    public void onBackPressed(){
+        Intent it = new Intent(getApplicationContext(), SaldoTotal.class);
+        startActivity(it);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dicas);

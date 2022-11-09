@@ -27,6 +27,13 @@ import java.util.Locale;
 public class Lancamento extends AppCompatActivity {
 
     @Override
+    public void onBackPressed(){
+        Intent it = new Intent(getApplicationContext(), SaldoTotal.class);
+        startActivity(it);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lancamento);
@@ -209,6 +216,10 @@ public class Lancamento extends AppCompatActivity {
             });
         }
 
+        //aq man
+        Intent it = new Intent(getApplicationContext(), SaldoTotal.class);
+        startActivity(it);
+        finish();
 
     }
 

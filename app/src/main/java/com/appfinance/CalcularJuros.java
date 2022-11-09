@@ -9,7 +9,7 @@ public class CalcularJuros extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent it = new Intent(getApplicationContext(), Home.class);
+        Intent it = new Intent(getApplicationContext(), SaldoTotal.class);
         startActivity(it);
         finish();
     }

@@ -1,34 +1,21 @@
 package com.appfinance;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.time.chrono.JapaneseChronology;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SaldoTotal extends AppCompatActivity {
 
@@ -77,6 +64,7 @@ public class SaldoTotal extends AppCompatActivity {
 
     }
 
+    double saldototal=0;
     private void loadData() {
 
         swipeRefreshLayout.setRefreshing(true);
@@ -89,7 +77,28 @@ public class SaldoTotal extends AppCompatActivity {
                     lan.setKey(data.getKey());
                     lanc.add(lan);
                     key = data.getKey();
+
+                    //teste de pegar valores das variaveis de valor para somar dps
+                    FirebaseAuth mAuth;
+                    mAuth = FirebaseAuth.getInstance();
+                    String temp="",comp1="",comp2="";
+                    comp1=mAuth.getCurrentUser().getEmail();
+                    comp2=lan.getEmail();
+                    if(comp1.equals(comp2)) {
+                        temp = lan.getValor();
+                        temp = temp.replace(".", "");
+                        temp = temp.replace(",", ".");
+                        if (lan.getDespesa()) {
+                            saldototal += Double.valueOf(temp)*-1;
+                        } else {
+                            saldototal += Double.valueOf(temp);
+                        }
+                    }
                 }
+
+                String temp = "R$: "+String.format("%.2f",saldototal);
+                temp = temp.replace(".", ",");
+                getSupportActionBar().setTitle("Saldo Total "+temp);
                 adapter.setItems(lanc);
                 adapter.notifyDataSetChanged();
                 isLoading=false;
