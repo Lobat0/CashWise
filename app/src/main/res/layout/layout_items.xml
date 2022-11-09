@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="&#8942;"
+            android:textSize="20sp"
+            android:id="@+id/txt_option"
+            android:layout_gravity="right"
+            android:textAlignment="center"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_email"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_receita"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_despesa"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_valor"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_data"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text"
+                android:textSize="20sp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/txt_categoria"/>
+
+
+        </LinearLayout>
+        
+        
+        
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

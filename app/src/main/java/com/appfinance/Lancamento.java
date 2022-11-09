@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Lancamento extends AppCompatActivity {
@@ -28,11 +30,30 @@ public class Lancamento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lancamento);
-        getSupportActionBar().setTitle("Lançamento");
+        getSupportActionBar().setTitle("Inserir Lançamento");
 
         EditText editTextValor = (EditText)findViewById(R.id.editTextValor);
         editTextValor.addTextChangedListener(new MoneyTextWatcher(editTextValor));
+
+        Button btbLancamento = (Button)findViewById(R.id.btbLancamento);
+        RadioButton rdbtnReceita = (RadioButton)findViewById(R.id.rdbtnReceita);
+        RadioButton rdbtnDespesa = (RadioButton)findViewById(R.id.rdbtnDespesa);
+        EditText editTextCategoria = (EditText)findViewById(R.id.editTextCategoria);
+        EditText editTextData = (EditText)findViewById(R.id.editTextData);
+
+        Lancamentos lanc_edit = (Lancamentos)getIntent().getSerializableExtra("EDIT");
+        if(lanc_edit != null){
+            rdbtnReceita.setChecked(lanc_edit.getReceita());
+            rdbtnDespesa.setChecked(lanc_edit.getDespesa());
+            editTextValor.setText(lanc_edit.getValor());
+            editTextData.setText(lanc_edit.getData());
+            editTextCategoria.setText(lanc_edit.getCategoria());
+            getSupportActionBar().setTitle("Editar Lançamento");
+        } else {
+            getSupportActionBar().setTitle("Inserir Lançamento");
+        }
     }
+
 
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -155,20 +176,38 @@ public class Lancamento extends AppCompatActivity {
         EditText editTextValor = (EditText)findViewById(R.id.editTextValor);
         EditText editTextData = (EditText)findViewById(R.id.editTextData);
         EditText editTextCategoria = (EditText)findViewById(R.id.editTextCategoria);
-
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
 
         DAOLancamentos dao = new DAOLancamentos();
+        Lancamentos lanc_edit = (Lancamentos)getIntent().getSerializableExtra("EDIT");
 
         Lancamentos lanc = new Lancamentos(email,rdbtnReceita.isChecked(),rdbtnDespesa.isChecked(),editTextValor.getText().toString(),editTextData.getText().toString(),editTextCategoria.getText().toString());
-
+        if(lanc_edit==null){
         dao.add(lanc).addOnSuccessListener(suc->{
             Toast.makeText(Lancamento.this, "Lançamento inserido com sucesso!", Toast.LENGTH_SHORT).show();
         }).addOnFailureListener(er->{
             Toast.makeText(Lancamento.this, "Erro: "+er.getMessage(), Toast.LENGTH_SHORT).show();
         });
+        } else {
+            HashMap<String,Object> hashMap = new HashMap<>();
+            hashMap.put("receita", rdbtnReceita.isChecked());
+            hashMap.put("despesa", rdbtnDespesa.isChecked());
+            hashMap.put("valor", editTextValor.getText().toString());
+            hashMap.put("data", editTextData.getText().toString());
+            hashMap.put("categoria", editTextCategoria.getText().toString());
+
+            dao.update(lanc_edit.getKey(), hashMap).addOnSuccessListener(suc->{
+
+                Toast.makeText(Lancamento.this, "Lançamento editado com sucesso! ", Toast.LENGTH_SHORT).show();
+
+            }).addOnFailureListener(er->{
+
+                Toast.makeText(Lancamento.this, "Erro: "+er.getMessage(), Toast.LENGTH_SHORT).show();
+
+            });
+        }
 
 
     }

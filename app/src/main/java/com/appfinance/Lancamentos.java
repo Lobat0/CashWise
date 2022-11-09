@@ -1,8 +1,21 @@
 package com.appfinance;
 
-import java.util.Date;
+import com.google.firebase.database.Exclude;
 
-public class Lancamentos {
+import java.io.Serializable;
+
+public class Lancamentos  implements Serializable {
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    @Exclude
+    private String key;
 
     private String email;
     private Boolean receita;
