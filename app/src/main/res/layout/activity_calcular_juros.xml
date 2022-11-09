@@ -27,41 +27,88 @@
             android:gravity="center"
             android:text="Insira os valores para calcular"
             android:textAlignment="gravity"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <TextView
+            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="Valor a ser pago"
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:text="Valor a ser pago"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/txt_valorPag"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_radius"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
+
+        <TextView
+            android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="Porcentagem de juros"
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:text="Porcentagem de juros"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/txt_porcJuros"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_radius"
+            android:ems="10"
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
+
+        <TextView
+            android:id="@+id/textView21"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:background="@color/white"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Quantidade de parcelas"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/txt_qtdParc"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_radius"
             android:ems="10"
-            android:hint="Quantidade de parcelas"
-            android:inputType="textPersonName" />
+            android:inputType="number"
+            android:paddingLeft="20dp"
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:paddingBottom="50dp">
 
             <TextView
@@ -72,30 +119,40 @@
                 android:gravity="center"
                 android:text="Tipo de juros"
                 android:textAlignment="gravity"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rdbtnSimp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
+                android:checked="true"
                 android:text="Simples"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/rdbtnComp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:buttonTint="#FFFFFF"
                 android:text="Composto"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
         </RadioGroup>
 
         <Button
             android:id="@+id/btnCalc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#5AED83"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="#55A162"
+            android:onClick="Calcular"
             android:text="Calcular"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:cornerRadius="30dp" />
 
     </LinearLayout>
 

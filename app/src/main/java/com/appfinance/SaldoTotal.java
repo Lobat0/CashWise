@@ -128,10 +128,10 @@ public class SaldoTotal extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.itemHome:
+            case R.id.itemCalcJuros:
                 //troca de tela aq só ir repetindo
                 //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it1 = new Intent(getApplicationContext(), Home.class);
+                Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 startActivity(it1);
                 finish();
                 return true;

@@ -17,9 +17,9 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/itemHome"
+        android:id="@+id/itemCalcJuros"
         android:background="#FFFFFF"
-        android:title="Home"
+        android:title="Calcular Juros"
         app:showAsAction="never" />
 
     <item

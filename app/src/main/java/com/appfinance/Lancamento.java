@@ -7,6 +7,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -183,6 +184,18 @@ public class Lancamento extends AppCompatActivity {
         EditText editTextValor = (EditText)findViewById(R.id.editTextValor);
         EditText editTextData = (EditText)findViewById(R.id.editTextData);
         EditText editTextCategoria = (EditText)findViewById(R.id.editTextCategoria);
+
+        if(TextUtils.isEmpty(editTextValor.getText())) {
+            Toast.makeText(Lancamento.this, "Preencha o valor! ", Toast.LENGTH_SHORT).show();
+            return;
+        }if(TextUtils.isEmpty(editTextData.getText())) {
+            Toast.makeText(Lancamento.this, "Preencha a data!", Toast.LENGTH_SHORT).show();
+            return;
+        }if(TextUtils.isEmpty(editTextCategoria.getText())) {
+            Toast.makeText(Lancamento.this, "Preencha a categoria!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
         String email = mAuth.getCurrentUser().getEmail();
@@ -239,10 +252,10 @@ public class Lancamento extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.itemHome:
+            case R.id.itemCalcJuros:
                 //troca de tela aq só ir repetindo
                 //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it1 = new Intent(getApplicationContext(), Home.class);
+                Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 startActivity(it1);
                 finish();
                 return true;

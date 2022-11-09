@@ -37,7 +37,7 @@ public class Logar extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Logar.this, "Usuário logado com sucesso", Toast.LENGTH_SHORT).show();
-                    Intent it = new Intent(getApplicationContext(), Home.class);
+                    Intent it = new Intent(getApplicationContext(), SaldoTotal.class);
                     startActivity(it);
                     finish();
                 }else{
