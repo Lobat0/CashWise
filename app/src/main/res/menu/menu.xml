@@ -5,8 +5,7 @@
 
     <item
         android:id="@+id/itemAnalise"
-        android:background="#FFFFFF"
-        android:title="Análise"
+        android:icon="@drawable/graphicon"
         android:visible="false"
         app:showAsAction="ifRoom" />
 
