@@ -256,17 +256,12 @@ public class Lancamento extends AppCompatActivity {
                 //troca de tela aq só ir repetindo
                 //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
+                HashMap<String, Double> hashMap = (HashMap<String, Double>)it1.getSerializableExtra("hashMap");
+                it1.putExtra("hashMap",hashMap);
                 startActivity(it1);
                 finish();
                 return true;
 
-            case R.id.itemAnalise:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it2 = new Intent(getApplicationContext(), Analise.class);
-                startActivity(it2);
-                finish();
-                return true;
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo

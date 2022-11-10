@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SaldoTotal extends AppCompatActivity {
 
@@ -64,7 +65,18 @@ public class SaldoTotal extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.findItem(R.id.itemAnalise).setVisible(true);
+        return false;
+    }
+
+    //hashmap q vai mandar valores pro piechart
+    HashMap<String,Double> hashMap=new HashMap<String,Double>();
+
     double saldototal=0;
+
     private void loadData() {
 
         swipeRefreshLayout.setRefreshing(true);
@@ -77,20 +89,22 @@ public class SaldoTotal extends AppCompatActivity {
                     lan.setKey(data.getKey());
                     lanc.add(lan);
                     key = data.getKey();
-
                     //teste de pegar valores das variaveis de valor para somar dps
                     FirebaseAuth mAuth;
                     mAuth = FirebaseAuth.getInstance();
                     String temp="",comp1="",comp2="";
                     comp1=mAuth.getCurrentUser().getEmail();
                     comp2=lan.getEmail();
+
                     if(comp1.equals(comp2)) {
                         temp = lan.getValor();
                         temp = temp.replace(".", "");
                         temp = temp.replace(",", ".");
                         if (lan.getDespesa()) {
+                            hashMap.put(lan.getCategoria(),Double.valueOf(temp)*-1);
                             saldototal += Double.valueOf(temp)*-1;
                         } else {
+                            hashMap.put(lan.getCategoria(),Double.valueOf(temp));
                             saldototal += Double.valueOf(temp);
                         }
                     }
@@ -140,6 +154,7 @@ public class SaldoTotal extends AppCompatActivity {
                 //troca de tela aq só ir repetindo
                 //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it2 = new Intent(getApplicationContext(), Analise.class);
+                it2.putExtra("hashMap",hashMap);
                 startActivity(it2);
                 finish();
                 return true;

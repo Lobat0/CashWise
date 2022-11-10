@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class CalcularJuros extends AppCompatActivity {
@@ -42,6 +43,10 @@ public class CalcularJuros extends AppCompatActivity {
         EditText txt_valorPag = (EditText)findViewById(R.id.txt_valorPag);
         txt_valorPag.addTextChangedListener(new CalcularJuros.MoneyTextWatcher(txt_valorPag));
 
+        Intent intent = getIntent();
+        HashMap<String, Double> hashMap = (HashMap<String, Double>)intent.getSerializableExtra("hashMap");
+
+
     }
 
     public void Calcular(View view){
@@ -50,7 +55,16 @@ public class CalcularJuros extends AppCompatActivity {
         EditText txt_qtdParc = (EditText)findViewById(R.id.txt_qtdParc);
         EditText txt_porcJuros = (EditText)findViewById(R.id.txt_porcJuros);
 
-        if(TextUtils.isEmpty(txt_valorPag.getText())) {
+        String temp = "";
+        temp = txt_valorPag.getText().toString();
+        temp = temp.replace(".", "");
+        temp = temp.replace(",", ".");
+
+        Double valPag= null,result = null,juros=null;
+
+        valPag = Double.valueOf(temp);
+
+        if(TextUtils.isEmpty(txt_valorPag.getText()) || 0 == valPag) {
             Toast.makeText(CalcularJuros.this, "Preencha o valor a ser pago! ", Toast.LENGTH_SHORT).show();
             return;
         }if(TextUtils.isEmpty(txt_qtdParc.getText()) || 0 == Double.parseDouble(txt_qtdParc.getText().toString())) {
@@ -60,14 +74,7 @@ public class CalcularJuros extends AppCompatActivity {
             Toast.makeText(CalcularJuros.this, "Preencha a quantidade de parcelas!", Toast.LENGTH_SHORT).show();
             return;
         }
-        String temp = "";
-        temp = txt_valorPag.getText().toString();
-        temp = temp.replace(".", "");
-        temp = temp.replace(",", ".");
 
-        Double valPag= null,result = null,juros=null;
-
-        valPag = Double.valueOf(temp);
         int parc=0;
 
         parc = Integer.valueOf(txt_qtdParc.getText().toString());
@@ -200,21 +207,7 @@ public class CalcularJuros extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.itemCalcJuros:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
-                startActivity(it1);
-                finish();
-                return true;
 
-            case R.id.itemAnalise:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it2 = new Intent(getApplicationContext(), Analise.class);
-                startActivity(it2);
-                finish();
-                return true;
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo

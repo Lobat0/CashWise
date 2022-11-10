@@ -4,13 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
+import java.lang.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Analise extends AppCompatActivity {
 
@@ -26,6 +36,40 @@ public class Analise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analise);
         getSupportActionBar().setTitle("Análise");
+
+        PieChart pieChart = findViewById(R.id.pieChart);
+
+        ArrayList<PieEntry> valores = new ArrayList<>();
+
+        Intent intent = getIntent();
+        HashMap<String, Double> hashMap = (HashMap<String, Double>)intent.getSerializableExtra("hashMap");
+
+        for(String i  :  hashMap.keySet() ) {
+            String tempString = Double.toString(hashMap.get(i));
+            valores.add(new PieEntry(Float.parseFloat(tempString), i));
+        }
+
+        PieDataSet pieDataSet = new PieDataSet(valores, "");
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setValueTextColor(Color.BLACK);
+        pieDataSet.setValueTextSize(20f);
+        pieDataSet.setFormSize(20f);
+
+        PieData pieData = new PieData(pieDataSet);
+        Legend l = pieChart.getLegend();
+
+        l.setTextColor(Color.WHITE);
+        l.setTextSize(20f);
+
+        pieChart.setCenterTextColor(Color.WHITE);
+        pieChart.setHoleColor(Color.parseColor("#1F1717"));
+        pieData.setValueTextSize(20f);
+        pieChart.setCenterTextSize(20f);
+        pieChart.setData(pieData);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.getDescription().setEnabled(false);
+        pieChart.setCenterText("Valores totais e suas categorias");
+        pieChart.animate();
     }
 
     @Override
@@ -49,14 +93,6 @@ public class Analise extends AppCompatActivity {
                 //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 startActivity(it1);
-                finish();
-                return true;
-
-            case R.id.itemAnalise:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it2 = new Intent(getApplicationContext(), Analise.class);
-                startActivity(it2);
                 finish();
                 return true;
 

@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashMap;
+
 public class Dicas extends AppCompatActivity {
 
     @Override
@@ -54,21 +56,6 @@ public class Dicas extends AppCompatActivity {
                 finish();
                 return true;
 
-            case R.id.itemAnalise:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it2 = new Intent(getApplicationContext(), Analise.class);
-                startActivity(it2);
-                finish();
-                return true;
-
-            case R.id.itemDicas:
-                //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it3 = new Intent(getApplicationContext(), Dicas.class);
-                startActivity(it3);
-                finish();
-                return true;
 
             case R.id.itemLancamento:
                 //troca de tela aq só ir repetindo
