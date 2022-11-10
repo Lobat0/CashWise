@@ -101,7 +101,7 @@ public class SaldoTotal extends AppCompatActivity {
                         temp = temp.replace(".", "");
                         temp = temp.replace(",", ".");
                         if (lan.getDespesa()) {
-                            hashMap.put(lan.getCategoria(),Double.valueOf(temp)*-1);
+                            hashMap.put(lan.getCategoria(),Double.valueOf(temp));
                             saldototal += Double.valueOf(temp)*-1;
                         } else {
                             hashMap.put(lan.getCategoria(),Double.valueOf(temp));
