@@ -211,15 +211,15 @@ public class CalcularJuros extends AppCompatActivity {
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it3 = new Intent(getApplicationContext(), Dicas.class);
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                Intent it3 = new Intent(getApplicationContext(), Dica.class);
                 startActivity(it3);
                 finish();
                 return true;
 
             case R.id.itemLancamento:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it4 = new Intent(getApplicationContext(), Lancamento.class);
                 startActivity(it4);
                 finish();
@@ -227,7 +227,7 @@ public class CalcularJuros extends AppCompatActivity {
 
             case R.id.itemSaldoTotal:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it5 = new Intent(getApplicationContext(), SaldoTotal.class);
                 startActivity(it5);
                 finish();

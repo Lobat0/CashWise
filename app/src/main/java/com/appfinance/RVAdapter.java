@@ -94,8 +94,8 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         {
                             Toast.makeText(context, "Lançamento removido com sucesso!", Toast.LENGTH_SHORT).show();
                             // tava bugando ai coloquei pra dar finish msm, dps tento arrumar o codigo debaixo era o certo mas n funciona
-                            // notifyItemRemoved(position);
-                            // list.remove(lanc);
+                            //notifyItemRemoved(position);
+                            //list.remove(lanc);
                             Intent intent2 = new Intent(context,SaldoTotal.class);
                             context.startActivity(intent2);
                             ((Activity)(context)).finish();

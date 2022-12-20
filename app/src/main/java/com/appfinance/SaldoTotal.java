@@ -65,10 +65,12 @@ public class SaldoTotal extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         menu.findItem(R.id.itemAnalise).setVisible(true);
+        menu.findItem(R.id.itemAnalise2).setVisible(true);
         return false;
     }
 
@@ -101,10 +103,10 @@ public class SaldoTotal extends AppCompatActivity {
                         temp = temp.replace(".", "");
                         temp = temp.replace(",", ".");
                         if (lan.getDespesa()) {
-                            hashMap.put(lan.getCategoria(),Double.valueOf(temp));
+                            hashMap.merge(lan.getCategoria(),Double.valueOf(temp)*-1,Double::sum);
                             saldototal += Double.valueOf(temp)*-1;
                         } else {
-                            hashMap.put(lan.getCategoria(),Double.valueOf(temp));
+                            hashMap.merge(lan.getCategoria(),Double.valueOf(temp),Double::sum);
                             saldototal += Double.valueOf(temp);
                         }
                     }
@@ -144,7 +146,7 @@ public class SaldoTotal extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemCalcJuros:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 startActivity(it1);
                 finish();
@@ -152,24 +154,71 @@ public class SaldoTotal extends AppCompatActivity {
 
             case R.id.itemAnalise:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it2 = new Intent(getApplicationContext(), Analise.class);
-                it2.putExtra("hashMap",hashMap);
+                HashMap<String,Double> hashRec=new HashMap<String,Double>();
+
+                hashMap.forEach((key, value) -> {
+                    String chave = key;
+                    Double valor = value;
+                    if(valor>0) {
+                        hashRec.put(chave, valor);
+                    }
+                });
+
+                Double totalhashRec = hashRec.values().stream().reduce(0.0, Double::sum);
+                Double porcentagem = totalhashRec/100;
+
+                hashRec.forEach((key, value) -> {
+                    String chave = key;
+                    Double valor = value;
+                        hashRec.put(chave, valor/porcentagem);
+                });
+
+                it2.putExtra("hashMap",hashRec);
+                startActivity(it2);
+                finish();
+                return true;
+
+            case R.id.itemAnalise2:
+                //troca de tela aq só ir repetindo
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                it2 = new Intent(getApplicationContext(), Analise.class);
+                HashMap<String,Double> hashDesp=new HashMap<String,Double>();
+
+                hashMap.forEach((key, value) -> {
+                    String chave = key;
+                    Double valor = value;
+                    if(valor<0) {
+                        hashDesp.put(chave, valor+-1);
+                    }
+                });
+
+                totalhashRec = hashDesp.values().stream().reduce(0.0, Double::sum);
+                porcentagem = totalhashRec/100;
+
+                hashDesp.forEach((key, value) -> {
+                    String chave = key;
+                    Double valor = value;
+                    hashDesp.put(chave, valor/porcentagem);
+                });
+
+                it2.putExtra("hashMap",hashDesp);
                 startActivity(it2);
                 finish();
                 return true;
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it3 = new Intent(getApplicationContext(), Dicas.class);
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                Intent it3 = new Intent(getApplicationContext(), Dica.class);
                 startActivity(it3);
                 finish();
                 return true;
 
             case R.id.itemLancamento:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it4 = new Intent(getApplicationContext(), Lancamento.class);
                 startActivity(it4);
                 finish();
@@ -177,7 +226,7 @@ public class SaldoTotal extends AppCompatActivity {
 
             case R.id.itemSaldoTotal:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it5 = new Intent(getApplicationContext(), SaldoTotal.class);
                 startActivity(it5);
                 finish();

@@ -1,159 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#1F1717"
-    tools:context=".Dicas">
+    tools:context=".Dica">
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swip2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="Cursos gratuitos sobre finanças pessoais:"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gestão de Finanças Pessoais (Banco Central)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="https://www.escolavirtual.gov.br/curso/170"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Como organizar o orçamento familiar (FGV)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link"
-            android:layout_width="371dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="https://educacao-executiva.fgv.br/cursos/online/curta-media-duracao-online/como-organizar-o-orcamento-familiar"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Como Gastar Conscientemente (FGV)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link2"
-            android:layout_width="372dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="https://educacao-executiva.fgv.br/cursos/online/curta-media-duracao-online/como-gastar-conscientemente"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fundamentos de Finanças (FGV)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link3"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="https://educacao-executiva.fgv.br/cursos/online/curta-media-duracao-online/fundamentos-de-financas"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Matemática Financeira Básica (CVM)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="http://cursos.cvm.gov.br/"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mercado financeiro de A a Z (ANBIMA)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link5"
-            android:layout_width="371dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="http://cursos.anbima.com.br/shopping/produto/Mercado_Financeiro_de_A_a_Z/3090"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mercado de renda fixa (ANBIMA)"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/txt_link6"
-            android:layout_width="390dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:autoLink="web"
-            android:background="#FFFFFF"
-            android:text="http://cursos.anbima.com.br/shopping/produto/Mercado_de_Renda_Fixa/3108"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

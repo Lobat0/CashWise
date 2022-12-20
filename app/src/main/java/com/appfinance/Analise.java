@@ -35,7 +35,7 @@ public class Analise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analise);
-        getSupportActionBar().setTitle("Análise");
+        getSupportActionBar().setTitle("Análise de Valores");
 
         PieChart pieChart = findViewById(R.id.pieChart);
 
@@ -68,7 +68,7 @@ public class Analise extends AppCompatActivity {
         pieChart.setData(pieData);
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.getDescription().setEnabled(false);
-        pieChart.setCenterText("Valores totais e suas categorias");
+        pieChart.setCenterText("Valores em porcentagem e suas categorias");
         pieChart.animate();
     }
 
@@ -90,7 +90,7 @@ public class Analise extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemCalcJuros:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 startActivity(it1);
                 finish();
@@ -98,15 +98,15 @@ public class Analise extends AppCompatActivity {
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it3 = new Intent(getApplicationContext(), Dicas.class);
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                Intent it3 = new Intent(getApplicationContext(), Dica.class);
                 startActivity(it3);
                 finish();
                 return true;
 
             case R.id.itemLancamento:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it4 = new Intent(getApplicationContext(), Lancamento.class);
                 startActivity(it4);
                 finish();
@@ -114,7 +114,7 @@ public class Analise extends AppCompatActivity {
 
             case R.id.itemSaldoTotal:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it5 = new Intent(getApplicationContext(), SaldoTotal.class);
                 startActivity(it5);
                 finish();

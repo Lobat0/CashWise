@@ -3,6 +3,8 @@ import static com.google.common.primitives.Ints.min;
 import static java.lang.Math.max;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -61,7 +63,6 @@ public class Lancamento extends AppCompatActivity {
             getSupportActionBar().setTitle("Inserir Lançamento");
         }
     }
-
 
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -166,9 +167,14 @@ public class Lancamento extends AppCompatActivity {
 
 
     public void DataEditar(View view){
-        new DatePickerDialog(Lancamento.this, date, myCalendar
-                .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        DatePickerDialog dpd = new DatePickerDialog(Lancamento.this, date,
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH));
+        dpd.show();
+        int greenColor = ContextCompat.getColor(view.getContext(), R.color.defaultgreen);
+        dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(greenColor);
+        dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(greenColor);
     }
 
     private void updateLabel() {
@@ -254,7 +260,7 @@ public class Lancamento extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.itemCalcJuros:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it1 = new Intent(getApplicationContext(), CalcularJuros.class);
                 HashMap<String, Double> hashMap = (HashMap<String, Double>)it1.getSerializableExtra("hashMap");
                 it1.putExtra("hashMap",hashMap);
@@ -265,15 +271,15 @@ public class Lancamento extends AppCompatActivity {
 
             case R.id.itemDicas:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
-                Intent it3 = new Intent(getApplicationContext(), Dicas.class);
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                Intent it3 = new Intent(getApplicationContext(), Dica.class);
                 startActivity(it3);
                 finish();
                 return true;
 
             case R.id.itemLancamento:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it4 = new Intent(getApplicationContext(), Lancamento.class);
                 startActivity(it4);
                 finish();
@@ -281,7 +287,7 @@ public class Lancamento extends AppCompatActivity {
 
             case R.id.itemSaldoTotal:
                 //troca de tela aq só ir repetindo
-                //Toast.makeText(Dicas.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Dica.this, "Teste do item 1", Toast.LENGTH_SHORT).show();
                 Intent it5 = new Intent(getApplicationContext(), SaldoTotal.class);
                 startActivity(it5);
                 finish();
